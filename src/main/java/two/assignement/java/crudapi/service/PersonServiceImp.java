@@ -39,4 +39,11 @@ public class PersonServiceImp implements PersonService {
         personDao.deletePerson(id);
 
     }
+
+    @Override
+    @Transactional
+    public boolean exists(int id) {
+        return personDao.exists(id);
+    }
+
 }

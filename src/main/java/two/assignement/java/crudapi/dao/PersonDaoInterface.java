@@ -11,6 +11,7 @@ public interface PersonDaoInterface {
     public Person getPersonById(int id);
     public void addPerson(Person person);
     public void deletePerson(int id);
+    public boolean exists(int id);
 
 
 

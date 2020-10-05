@@ -24,14 +24,14 @@ public class frontlineController {
 
     }
 
-    @PostMapping("/frontline/{id}")
+    @PostMapping("/frontline")
     public Person addPerson(@RequestBody Person newPerson){
         return personRestController.addPerson(newPerson);
 
     }
     @PutMapping("/frontline/{id}")
-    public Person updatePerson(@PathVariable int id){
-        return personRestController.updatePerson(id);
+    public Person updatePerson(@PathVariable int id,@RequestBody Person person){
+        return personRestController.updatePerson(id,person);
 
     }
     @DeleteMapping("/frontline/{id}")

@@ -49,4 +49,9 @@ public class PersonDaoHibernate implements PersonDaoInterface {
         deleteQuery.executeUpdate();
 
     }
+    public boolean exists(int id){
+        Session session = entityManager.unwrap(Session.class);
+        if(session.get(Person.class,id)==null) return false;
+        return true;
+    }
 }

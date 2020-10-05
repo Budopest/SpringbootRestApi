@@ -29,19 +29,21 @@ public class PersonRestController {
         }
         return requiredPerson;
     }
-    @PostMapping("/persons/{id}")
+    @PostMapping("/persons")
     public Person addPerson(@RequestBody Person newPerson){
         newPerson.setId(0);
         personService.addPerson(newPerson);
         return newPerson;
     }
     @PutMapping("/persons/{id}")
-    public Person updatePerson(@PathVariable int id){
+    public Person updatePerson(@PathVariable int id,@RequestBody Person person){
         Person requiredPerson = personService.getPersonById(id);
         if(requiredPerson==null){
             throw new PersonNotFoundException("Employee id not found: "+id);
         }
-        personService.addPerson(requiredPerson);
+        requiredPerson.setFirstName(person.getFirstName());
+        requiredPerson.setLastName(person.getLastName());
+        //personService.addPerson(person);
         return requiredPerson;
     }
     @DeleteMapping("/persons/{id}")
